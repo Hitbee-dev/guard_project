@@ -1,21 +1,61 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:guard_project/real_map.dart';
 
-class HomePage extends StatelessWidget {
+import 'constants/screen_size.dart';
 
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
+  static DateTime currentBackPressTime;
+
+  _isEnd() {
+    DateTime now = DateTime.now();
+    if (currentBackPressTime == null ||
+        now.difference(currentBackPressTime) > Duration(seconds: 2)) {
+      currentBackPressTime = now;
+      _globalKey.currentState
+        ..hideCurrentSnackBar()
+        ..showSnackBar(SnackBar(
+          duration: Duration(seconds: 2),
+          content: Text("종료하시려면 한번 더 누르세요."),
+        ));
+      return false;
+    }
+    return true;
+  }
+  /// BackButton 연속 2번 누를 시 종료 Event
 
   String search_data = "";
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.black));
+
+    /// 상태바 색상 변경
+    if (size == null) size = MediaQuery.of(context).size;
+
+    return WillPopScope(
+      onWillPop: () async {
+        bool result = _isEnd();
+        return await Future.value(result);
+      },
       child: Scaffold(
+        key: _globalKey,
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.grey,
         appBar: AppBar(
           backgroundColor: Color(0XFF242959),
           title: Text(
             "지역 안전 지킴e",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style:
+                TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
         ),
@@ -44,90 +84,102 @@ class HomePage extends StatelessWidget {
 
   Padding _mainmap() {
     return Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                        child: Image.asset("assets/images/mainmap.png"),
-                  ),
-                );
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        child: Image.asset("assets/images/mainmap.png"),
+      ),
+    );
   }
 
   Padding _btn2() {
     return Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    RaisedButton(
-                      color: Colors.white,
-                      child: Container(
-                        width: 100,
-                        height: 50,
-                        alignment: Alignment.center,
-                        child: Text("현 위치",textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14),
-                        ),
-                      ),
-                      onPressed: () {},
-                    ),
-                    RaisedButton(
-                      color: Colors.white,
-                      child: Container(
-                        width: 100,
-                        height: 50,
-                        alignment: Alignment.center,
-                        child: Text("범죄 발생 시간",textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14),
-                        ),
-                      ),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              );
+      padding: const EdgeInsets.only(top: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          RaisedButton(
+            color: Colors.white,
+            child: Container(
+              width: 100,
+              height: 50,
+              alignment: Alignment.center,
+              child: Text(
+                "현 위치",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14),
+              ),
+            ),
+            onPressed: () {
+              setState(() {
+                return RealMap();
+              });
+            },
+          ),
+          RaisedButton(
+            color: Colors.white,
+            child: Container(
+              width: 100,
+              height: 50,
+              alignment: Alignment.center,
+              child: Text(
+                "범죄 발생 시간",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14),
+              ),
+            ),
+            onPressed: () {},
+          ),
+        ],
+      ),
+    );
   }
 
   Row _btn1() {
     return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  RaisedButton(
-                    color: Colors.white,
-                    child: Container(
-                      width: 100,
-                      height: 50,
-                      alignment: Alignment.center,
-                      child: Text("지역별 현황",textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                        fontSize: 14),
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
-                  RaisedButton(
-                    color: Colors.white,
-                    child: Container(
-                      width: 100,
-                      height: 50,
-                      alignment: Alignment.center,
-                      child: Text("지역별 안전 지수",textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14),
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
-                ],
-              );
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        RaisedButton(
+          color: Colors.white,
+          child: Container(
+            width: 100,
+            height: 50,
+            alignment: Alignment.center,
+            child: Text(
+              "지역별 현황",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14),
+            ),
+          ),
+          onPressed: () {},
+        ),
+        RaisedButton(
+          color: Colors.white,
+          child: Container(
+            width: 100,
+            height: 50,
+            alignment: Alignment.center,
+            child: Text(
+              "지역별 안전 지수",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14),
+            ),
+          ),
+          onPressed: () {},
+        ),
+      ],
+    );
   }
 
   Padding _search() {

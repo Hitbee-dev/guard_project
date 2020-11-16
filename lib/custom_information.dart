@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NotificationPage extends StatelessWidget {
+class CustomInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -8,7 +8,7 @@ class NotificationPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color(0XFF242959),
           title: Text(
-            "알림",
+            "호신술 정보",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
@@ -23,24 +23,28 @@ class NotificationPage extends StatelessWidget {
 
 Widget _myCardTypeList(BuildContext context) {
   final titles = [
-    '버전 업데이트가 완료되었습니다.',
-    '새로운 뉴스가 업로드 되었습니다.',
+    '기억해야 할 급소',
+    '가장 쉽고 효과적인 대응법',
+    '정면에서 붙잡힌다면',
+    '손을 빼는 방법',
+    '뒤에서 붙잡힌다면',
+    '옆쪽으로 다가온다면',
   ];
   final icons = [
-    Icons.check_circle_outline,
-    Icons.fiber_new,
-  ];
-  final colors = [
-    Colors.green,
-    Colors.blueAccent,
+    Icons.accessibility_new,
+    Icons.check,
+    Icons.location_searching,
+    Icons.call_missed,
+    Icons.settings_backup_restore,
+    Icons.accessible_forward,
   ];
   return ListView.builder(
     itemCount: titles.length,
     itemBuilder: (context, index) {
       return Card(
         child: ListTile(
-          leading: Icon(icons[index], color: colors[index]),
-          title: Text(titles[index], style: TextStyle(fontWeight: FontWeight.bold),),
+          leading: Icon(icons[index]),
+          title: Text(titles[index]),
           onTap: () {},
         ),
       );

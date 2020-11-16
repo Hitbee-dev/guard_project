@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:guard_project/custom_information.dart';
+import 'package:guard_project/emg_voice.dart';
 import 'package:guard_project/home_page.dart';
 import 'package:guard_project/real_map.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'constants/screen_size.dart';
+import 'information.dart';
+import 'notification_page.dart';
 
 class BottomBar extends StatefulWidget {
   BottomBar({
@@ -27,10 +31,10 @@ class _BottomBarState extends State<BottomBar> {
 
   List<Widget> _screen = <Widget>[
     RealMap(),
-    Container(color: Colors.orange),
+    NotificationPage(),
     HomePage(),
-    Container(color: Colors.green),
-    Container(color: Colors.blue),
+    CustomInformation(),
+    EMGVoice(),
     // ProfileScreen(),
   ];
 
