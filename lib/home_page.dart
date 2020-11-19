@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
   static DateTime currentBackPressTime;
+  final homeHeight = size.height;
 
   _isEnd() {
     DateTime now = DateTime.now();
@@ -35,10 +36,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.black));
-
-    /// 상태바 색상 변경
     if (size == null) size = MediaQuery.of(context).size;
 
     return WillPopScope(
@@ -59,20 +56,22 @@ class _HomePageState extends State<HomePage> {
           ),
           centerTitle: true,
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.white),
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
+        body: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white),
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(20))),
+            child: SingleChildScrollView(
               child: Column(
-                children: [
+                children: <Widget> [
                   _search(),
                   _btn1(),
                   _btn2(),
                   _mainmap(),
+                  SizedBox(height: homeHeight,)
+                  // Expanded(flex: 1,child: Container()),
                 ],
               ),
             ),
@@ -100,11 +99,11 @@ class _HomePageState extends State<HomePage> {
           RaisedButton(
             color: Colors.white,
             child: Container(
-              width: 100,
+              width: 120,
               height: 50,
               alignment: Alignment.center,
               child: Text(
-                "현 위치",
+                "내 주위 안심터",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.black,
@@ -121,7 +120,7 @@ class _HomePageState extends State<HomePage> {
           RaisedButton(
             color: Colors.white,
             child: Container(
-              width: 100,
+              width: 120,
               height: 50,
               alignment: Alignment.center,
               child: Text(
@@ -147,11 +146,11 @@ class _HomePageState extends State<HomePage> {
         RaisedButton(
           color: Colors.white,
           child: Container(
-            width: 100,
+            width: 120,
             height: 50,
             alignment: Alignment.center,
             child: Text(
-              "지역별 현황",
+              "지역별 범죄 현황",
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.black,
@@ -164,7 +163,7 @@ class _HomePageState extends State<HomePage> {
         RaisedButton(
           color: Colors.white,
           child: Container(
-            width: 100,
+            width: 120,
             height: 50,
             alignment: Alignment.center,
             child: Text(

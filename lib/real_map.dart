@@ -40,7 +40,7 @@ class _RealMapState extends State<RealMap> {
         appBar: AppBar(
           backgroundColor: Color(0XFF242959),
           title: Text(
-            "현 위치",
+            "내 주위 안심터",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,

@@ -8,7 +8,7 @@ class EMGVoice extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color(0XFF242959),
           title: Text(
-            "비상 보이스",
+            "안전 보이스",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
