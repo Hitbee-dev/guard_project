@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:guard_project/place_crime_rate.dart';
+import 'package:guard_project/place_safety_rate.dart';
+import 'package:guard_project/time_of_crime.dart';
 import 'package:intl/intl.dart';
 import 'package:guard_project/real_map.dart';
 
@@ -139,7 +142,14 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 14),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                Navigator.push(context,
+                    MaterialPageRoute<void>(builder: (BuildContext context) {
+                      return TimeOfCrime();
+                    }));
+              });
+            },
           ),
         ],
       ),
@@ -165,7 +175,14 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 14),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              Navigator.push(context,
+                  MaterialPageRoute<void>(builder: (BuildContext context) {
+                    return PlaceCrimeRate();
+                  }));
+            });
+          },
         ),
         RaisedButton(
           color: Colors.white,
@@ -182,7 +199,14 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 14),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              Navigator.push(context,
+                  MaterialPageRoute<void>(builder: (BuildContext context) {
+                    return PlaceSafetyRate();
+                  }));
+            });
+          },
         ),
       ],
     );
