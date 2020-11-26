@@ -38,6 +38,9 @@ class _RealMapState extends State<RealMap> {
     return Container(
       child: Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.white, //change your color here
+          ),
           backgroundColor: Color(0XFF242959),
           title: Text(
             "내 주위 안심터",

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:guard_project/real_map.dart';
 
 import 'constants/screen_size.dart';
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     if (currentBackPressTime == null ||
         now.difference(currentBackPressTime) > Duration(seconds: 2)) {
       currentBackPressTime = now;
+      // print(currentBackPressTime);
       _globalKey.currentState
         ..hideCurrentSnackBar()
         ..showSnackBar(SnackBar(
@@ -30,6 +32,7 @@ class _HomePageState extends State<HomePage> {
     }
     return true;
   }
+
   /// BackButton 연속 2번 누를 시 종료 Event
 
   String search_data = "";
@@ -51,8 +54,7 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Color(0XFF242959),
           title: Text(
             "지역 안전 지킴e",
-            style:
-                TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
         ),
@@ -65,12 +67,14 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             child: SingleChildScrollView(
               child: Column(
-                children: <Widget> [
-                  _search(),
+                children: <Widget>[
+                  _timeofsetcolor(),
                   _btn1(),
                   _btn2(),
                   _mainmap(),
-                  SizedBox(height: homeHeight,)
+                  SizedBox(
+                    height: homeHeight,
+                  )
                   // Expanded(flex: 1,child: Container()),
                 ],
               ),
@@ -113,7 +117,10 @@ class _HomePageState extends State<HomePage> {
             ),
             onPressed: () {
               setState(() {
-                return RealMap();
+                Navigator.push(context,
+                    MaterialPageRoute<void>(builder: (BuildContext context) {
+                  return RealMap();
+                }));
               });
             },
           ),
@@ -181,34 +188,81 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Padding _search() {
+  Padding _timeofsetcolor() {
+    DateTime now = DateTime.now();
+    String formattedDate = DateFormat('kk').format(now);
+    int parsedate = int.parse(formattedDate);
+    int check = 0;
+    if(parsedate > 8 && parsedate < 20) {
+      check = 0;
+    } else {
+      check = 1;
+    }
+
+    final safetyicons = [
+      Icons.check_circle,
+      Icons.add_circle,
+    ];
+
+    final safetytexts = [
+      "안전한 시간입니다",
+      "위험한 시간입니다"
+    ];
+
+    final safetycolors = [
+      Colors.green,
+      Colors.red
+    ];
+
+    print(formattedDate);
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
         height: 50,
         width: 400,
-        child: TextFormField(
-          style: TextStyle(fontSize: 18, color: Colors.black),
-          decoration: InputDecoration(
-              focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(12))),
-              enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.grey, width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(12))),
-              labelText: "검색어를 입력하세요",
-              labelStyle: TextStyle(fontSize: 20, color: Colors.grey),
-              // icon: Icon(Icons.search),
-              // prefixIcon: Icon(Icons.search) // TextField 앞에 아이콘
-              suffixIcon: Icon(Icons.search) // TextField 뒤에 아이콘
-              ),
-          keyboardType: TextInputType.text,
-          onSaved: (String value) {
-            search_data = value;
-          },
-          // controller: _c,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            IconButton(
+              icon: Icon(safetyicons[check], color: safetycolors[check],),
+            ),
+            Text(safetytexts[check],
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
+          ],
         ),
       ),
     );
   }
+
+  /// 아래 코드는 검색창 + 돋보기 아이콘 안에 넣는 코드
+// Padding _search() {
+//   return Padding(
+//     padding: const EdgeInsets.all(20.0),
+//     child: Container(
+//       height: 50,
+//       width: 400,
+//       child: TextFormField(
+//         style: TextStyle(fontSize: 18, color: Colors.black),
+//         decoration: InputDecoration(
+//             focusedBorder: OutlineInputBorder(
+//                 borderSide: BorderSide(color: Colors.grey, width: 2.0),
+//                 borderRadius: BorderRadius.all(Radius.circular(12))),
+//             enabledBorder: OutlineInputBorder(
+//                 borderSide: BorderSide(color: Colors.grey, width: 2.0),
+//                 borderRadius: BorderRadius.all(Radius.circular(12))),
+//             labelText: "검색어를 입력하세요",
+//             labelStyle: TextStyle(fontSize: 20, color: Colors.grey),
+//             // icon: Icon(Icons.search),
+//             // prefixIcon: Icon(Icons.search) // TextField 앞에 아이콘
+//             suffixIcon: Icon(Icons.search) // TextField 뒤에 아이콘
+//         ),
+//         keyboardType: TextInputType.text,
+//         onSaved: (String value) {
+//           search_data = value;
+//         },
+//         // controller: _c,
+//       ),
+//     ),
+//   );
+// }
 }
