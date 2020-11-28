@@ -251,7 +251,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(safetyicons[check], color: safetycolors[check],),
             ),
             Text(safetytexts[check],
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20))
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20,color: safetycolors[check]))
           ],
         ),
       ),
