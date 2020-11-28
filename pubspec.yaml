@@ -39,6 +39,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  flutter_launcher_icons: ^0.7.2
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "appicon/app_icon.png"
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -58,7 +65,20 @@ flutter:
     - assets/images/crimetime.png
     - assets/images/mainmap.png
     - assets/images/placecrimerate.png
-    - assets/images/placesafetyrate.png
+    - assets/images/safety_rate.png
+    - assets/images/2015_safety_rate.png
+    - assets/images/2016_safety_rate.png
+    - assets/images/2017_safety_rate.png
+    - assets/images/2018_safety_rate.png
+    - assets/images/2019_safety_rate.png
+    - assets/images/place_gangnam.png
+    - assets/images/year_select.png
+    - assets/images/2015_place.png
+    - assets/images/2016_place.png
+    - assets/images/2017_place.png
+    - assets/images/2018_place.png
+    - assets/images/2019_place.png
+    - assets/images/place_select_text.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -7,13 +7,26 @@ class PlaceSafetyRate extends StatefulWidget {
   _PlaceSafetyRateState createState() => _PlaceSafetyRateState();
 }
 
+
 class _PlaceSafetyRateState extends State<PlaceSafetyRate> {
   final _placeList = ["지역선택", "강남구", "송파구", "강동구", "서초구", "관악구"];
   String _selectedPlace = "지역선택";
-  final _yearList = ["연도선택", "2015", "2016", "2017", "2018", "2019"];
+  final _yearList = ["연도선택", "2019", "2018", "2017", "2016", "2015"];
   String _selectedYear = "연도선택";
 
   final crimeWidth = size.width;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +50,8 @@ class _PlaceSafetyRateState extends State<PlaceSafetyRate> {
             decoration: BoxDecoration(
                 image: DecorationImage(
                   alignment: Alignment.topCenter,
-                  image: AssetImage("assets/images/placesafetyrate.png"),
-                )
+                  image: AssetImage(_placeselect()),
+                ),
             ),
             // color: Colors.white,
             child: Column(
@@ -55,7 +68,37 @@ class _PlaceSafetyRateState extends State<PlaceSafetyRate> {
     );
   }
 
-  Container _crimeoption() {
+  _placeselect() {
+    if (_selectedPlace == "지역선택") {
+      String setimages = "assets/images/safety_rate.png";
+      return setimages;
+    } else if(_selectedPlace == "강남구") {
+      if(_selectedYear == "2015") {
+        String setimages = "assets/images/2015_safety_rate.png";
+        return setimages;
+      } else if(_selectedYear == "2016") {
+        String setimages = "assets/images/2016_safety_rate.png";
+        return setimages;
+      } else if(_selectedYear == "2017") {
+        String setimages = "assets/images/2017_safety_rate.png";
+        return setimages;
+      } else if(_selectedYear == "2018") {
+        String setimages = "assets/images/2018_safety_rate.png";
+        return setimages;
+      } else if(_selectedYear == "2019") {
+        String setimages = "assets/images/2019_safety_rate.png";
+        return setimages;
+      } else {
+        String setimages = "assets/images/safety_rate.png";
+        return setimages;
+      }
+    } else {
+      String setimages = "assets/images/safety_rate.png";
+      return setimages;
+    }
+  }
+
+  Widget _crimeoption() {
     return Container(
       decoration: BoxDecoration(
           border: Border.all(
@@ -68,7 +111,7 @@ class _PlaceSafetyRateState extends State<PlaceSafetyRate> {
     );
   }
 
-  Padding _crimetexts() {
+  Widget _crimetexts() {
     return Padding(
       padding: const EdgeInsets.only(bottom: 90),
       child: Column(
@@ -91,6 +134,10 @@ class _PlaceSafetyRateState extends State<PlaceSafetyRate> {
         ],
       ),
     );
+  }
+
+  _crimechange() {
+
   }
 
   Container _placecombobox() {
