@@ -7,16 +7,30 @@ class TimeOfCrime extends StatefulWidget {
   _TimeOfCrimeState createState() => _TimeOfCrimeState();
 }
 
-class _TimeOfCrimeState extends State<TimeOfCrime> {
-  final _yearList = ["연도선택", "2015", "2016", "2017", "2018", "2019"];
-  String _selectedYear = "연도선택";
 
-  final crimeHeight = size.height;
+class _TimeOfCrimeState extends State<TimeOfCrime> {
+  final _yearList = ["2019", "2018", "2017", "2016", "2015"];
+  String _selectedYear = "2019";
+
+  final crimeWidth = size.width;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           iconTheme: IconThemeData(
             color: Colors.white, //change your color here
@@ -28,73 +42,126 @@ class _TimeOfCrimeState extends State<TimeOfCrime> {
           ),
           centerTitle: true,
         ),
-        body: Container(
-          color: Colors.white,
-          child: Column(
-            children: <Widget>[
-              _combobox(),
-              _mainmap(),
-              Expanded(child: Container()),
-              _crimeoption()
-            ],
+        body: Padding(
+          padding: const EdgeInsets.only(top: 20),
+          child: Container(
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     alignment: Alignment.topCenter,
+            //     image: AssetImage(_placeselect()),
+            //   ),
+            // ),
+            // color: Colors.white,
+            child: Column(
+              children: <Widget>[
+                _yearcombobox(),
+                Image.asset(_placeselect()),
+                Expanded(child: Container()),
+                _crimeoption()
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Padding _crimeoption() {
-    return Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.grey[500],
-                      ),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(30),
-                          topRight: Radius.circular(30))),
-                  child: _crimetexts(),
-                ),
-              );
+  _placeselect() {
+    if (_selectedYear == "2015") {
+      String setimages = "assets/images/2015_time.png";
+      return setimages;
+    } else if (_selectedYear == "2016") {
+      String setimages = "assets/images/2016_time.png";
+      return setimages;
+    } else if (_selectedYear == "2017") {
+      String setimages = "assets/images/2017_time.png";
+      return setimages;
+    } else if (_selectedYear == "2018") {
+      String setimages = "assets/images/2018_time.png";
+      return setimages;
+    } else if (_selectedYear == "2019") {
+      String setimages = "assets/images/2019_time.png";
+      return setimages;
+    }
   }
 
-  Column _crimetexts() {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text("가장 많이 발생한 범죄 : 살인", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)]),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text("가장 많이 발생한 장소 : 단독주택", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),)]),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text("가장 많이 발생한 시간대 : 9시 ~ 10시", style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),)]),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 30),
-          child: SingleChildScrollView(
-            child: Container(),
+  Widget _crimeoption() {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.grey[500],
           ),
-        )
-      ],
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30))),
+      child: _crimetexts(),
     );
   }
 
-  Container _combobox() {
+  Widget _crimetexts() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 40),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 40),
+                child: Text(_crimechange(),
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+                ),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  _crimechange() {
+      if (_selectedYear == "2015") {
+        String settext =
+            "\n가장 많이 발생한 범죄 : 폭력\n\n"
+            "가장 많이 발생한 장소 : 단독주택\n\n"
+            "가장 많이 발생한 시간대 : 21:00~23:59\n";
+        return settext;
+      } else if (_selectedYear == "2016") {
+        String settext =
+            "\n가장 많이 발생한 범죄 : 절도\n\n"
+            "가장 많이 발생한 장소 : 상점\n\n"
+            "가장 많이 발생한 시간대 : 18:00~20:59\n";
+        return settext;
+      } else if (_selectedYear == "2017") {
+        String settext =
+            "\n가장 많이 발생한 범죄 : 폭력\n\n"
+            "가장 많이 발생한 장소 : 상점\n\n"
+            "가장 많이 발생한 시간대 : 03:00~05:59\n";
+        return settext;
+      } else if (_selectedYear == "2018") {
+        String settext =
+            "\n가장 많이 발생한 범죄 : 절도\n\n"
+            "가장 많이 발생한 장소 : 상점\n\n"
+            "가장 많이 발생한 시간대 : 03:00~05:59\n";
+        return settext;
+      } else if (_selectedYear == "2019") {
+        String settext =
+            "\n가장 많이 발생한 범죄 : 절도\n\n"
+            "가장 많이 발생한 장소 : 상점\n\n"
+            "가장 많이 발생한 시간대 : 21:00~23:59\n";
+        return settext;
+      }
+  }
+
+  Container _yearcombobox() {
     return Container(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 20),
+        padding: const EdgeInsets.only(left: 20),
         child: DropdownButton(
           iconEnabledColor: Colors.grey,
           iconSize: 20,
@@ -111,15 +178,6 @@ class _TimeOfCrimeState extends State<TimeOfCrime> {
             });
           },
         ),
-      ),
-    );
-  }
-
-  Padding _mainmap() {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Container(
-        child: Image.asset("assets/images/crimetime.png"),
       ),
     );
   }

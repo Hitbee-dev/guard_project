@@ -65,32 +65,38 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
-    - assets/images/crimetime.png
-    - assets/images/mainmap.png
-    - assets/images/placecrimerate.png
-    - assets/images/safety_rate.png
-    - assets/images/init_safe.png
-    - assets/images/2015_safe.png
-    - assets/images/2016_safe.png
-    - assets/images/2017_safe.png
-    - assets/images/2018_safe.png
-    - assets/images/2019_safe.png
-    - assets/images/place_gangnam.png
-    - assets/images/year_select.png
-    - assets/images/2015_place.png
-    - assets/images/2016_place.png
-    - assets/images/2017_place.png
-    - assets/images/2018_place.png
-    - assets/images/2019_place.png
-    - assets/images/place_select_text.png
-    - assets/images/information001.png
-    - assets/images/information002.png
-    - assets/images/information003.png
-    - assets/images/information004.png
-    - assets/images/information005.png
-    - assets/images/information006.png
-    - assets/audios/lovetogo.mp3
+    - assets/images/
+#    - assets/images/crimetime.png
+#    - assets/images/mainmap.png
+#    - assets/images/placecrimerate.png
+#    - assets/images/safety_rate.png
+#    - assets/images/init_safe.png
+#    - assets/images/2015_safe.png
+#    - assets/images/2016_safe.png
+#    - assets/images/2017_safe.png
+#    - assets/images/2018_safe.png
+#    - assets/images/2019_safe.png
+#    - assets/images/place_gangnam.png
+#    - assets/images/year_select.png
+#    - assets/images/2015_place.png
+#    - assets/images/2016_place.png
+#    - assets/images/2017_place.png
+#    - assets/images/2018_place.png
+#    - assets/images/2019_place.png
+#    - assets/images/place_select_text.png
+#    - assets/images/information001.png
+#    - assets/images/information002.png
+#    - assets/images/information003.png
+#    - assets/images/information004.png
+#    - assets/images/information005.png
+#    - assets/images/information006.png
+#    - assets/images/2015_time.png
+#    - assets/images/2016_time.png
+#    - assets/images/2017_time.png
+#    - assets/images/2018_time.png
+#    - assets/images/2019_time.png
 
+    - assets/audios/lovetogo.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
