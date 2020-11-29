@@ -3,15 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class RealMap extends StatefulWidget {
+class SubMap extends StatefulWidget {
   @override
-  State createState() {
-    // TODO: implement createState
-    return RealMapState();
-  }
+  State createState() => SubMapState();
 }
 
-class RealMapState extends State<RealMap> {
+class SubMapState extends State<SubMap> {
   final GlobalKey scaffoldKey = GlobalKey();
 
   Completer _controller = Completer();
@@ -74,7 +71,7 @@ class RealMapState extends State<RealMap> {
             child: Column(
               children: <Widget>[
                 FloatingActionButton(
-                  heroTag: "rhome",
+                  heroTag: "shome",
                   onPressed: _myHome,
                   materialTapTargetSize: MaterialTapTargetSize.padded,
                   backgroundColor: Color(0XFF242959),
@@ -82,7 +79,7 @@ class RealMapState extends State<RealMap> {
                 ),
                 SizedBox(height: 16.0),
                 FloatingActionButton(
-                  heroTag: "rstore",
+                  heroTag: "sstore",
                   onPressed: _onAddMarkerButtonPressed,
                   materialTapTargetSize: MaterialTapTargetSize.padded,
                   backgroundColor: Color(0XFF242959),
@@ -91,7 +88,7 @@ class RealMapState extends State<RealMap> {
                 ),
                 SizedBox(height: 16.0),
                 FloatingActionButton(
-                  heroTag: "rpolice",
+                  heroTag: "spolice",
                   onPressed: _onPoliceMarkerButtonPressed,
                   materialTapTargetSize: MaterialTapTargetSize.padded,
                   backgroundColor: Color(0XFF242959),
@@ -865,7 +862,7 @@ class RealMapState extends State<RealMap> {
               position: LatLng(lats[storecount], lngs[storecount]),
               icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
               infoWindow:
-                  InfoWindow(title: titles[storecount], snippet: address[storecount]));
+              InfoWindow(title: titles[storecount], snippet: address[storecount]));
         });
       }
       storecount = 0;
@@ -1005,7 +1002,7 @@ class RealMapState extends State<RealMap> {
               position: LatLng(lats[policecount], lngs[policecount]),
               icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
               infoWindow:
-                  InfoWindow(title: titles[policecount], snippet: address[policecount]));
+              InfoWindow(title: titles[policecount], snippet: address[policecount]));
         });
       }
       policecount = 0;
