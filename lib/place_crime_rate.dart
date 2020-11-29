@@ -97,7 +97,7 @@ class _PlaceCrimeRateState extends State<PlaceCrimeRate> {
   }
 
   _placeset() {
-    if (_selectedYear == "연도선택") {
+    if (_selectedPlace == "지역선택") {
       String setimages = "assets/images/place_select_text.png";
       return setimages;
     } else if (_selectedPlace == "강남구") {
