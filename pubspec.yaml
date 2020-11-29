@@ -27,6 +27,7 @@ dependencies:
   google_maps_flutter: ^0.5.27+3
   geolocator: ^6.1.4
   fluster: ^1.1.2
+  audioplayers: ^0.17.0
   url_launcher: ^5.7.6
   geocoder: ^0.2.1
   flutter:
@@ -88,6 +89,7 @@ flutter:
     - assets/images/information004.png
     - assets/images/information005.png
     - assets/images/information006.png
+    - assets/audios/lovetogo.mp3
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
