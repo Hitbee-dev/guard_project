@@ -70,30 +70,30 @@ class _PlaceSafetyRateState extends State<PlaceSafetyRate> {
 
   _placeselect() {
     if (_selectedPlace == "지역선택") {
-      String setimages = "assets/images/safety_rate.png";
+      String setimages = "assets/images/init_safe.png";
       return setimages;
     } else if(_selectedPlace == "강남구") {
       if(_selectedYear == "2015") {
-        String setimages = "assets/images/2015_safety_rate.png";
+        String setimages = "assets/images/2015_safe.png";
         return setimages;
       } else if(_selectedYear == "2016") {
-        String setimages = "assets/images/2016_safety_rate.png";
+        String setimages = "assets/images/2016_safe.png";
         return setimages;
       } else if(_selectedYear == "2017") {
-        String setimages = "assets/images/2017_safety_rate.png";
+        String setimages = "assets/images/2017_safe.png";
         return setimages;
       } else if(_selectedYear == "2018") {
-        String setimages = "assets/images/2018_safety_rate.png";
+        String setimages = "assets/images/2018_safe.png";
         return setimages;
       } else if(_selectedYear == "2019") {
-        String setimages = "assets/images/2019_safety_rate.png";
+        String setimages = "assets/images/2019_safe.png";
         return setimages;
       } else {
-        String setimages = "assets/images/safety_rate.png";
+        String setimages = "assets/images/init_safe.png";
         return setimages;
       }
     } else {
-      String setimages = "assets/images/safety_rate.png";
+      String setimages = "assets/images/init_safe.png";
       return setimages;
     }
   }

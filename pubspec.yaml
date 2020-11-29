@@ -68,11 +68,12 @@ flutter:
     - assets/images/mainmap.png
     - assets/images/placecrimerate.png
     - assets/images/safety_rate.png
-    - assets/images/2015_safety_rate.png
-    - assets/images/2016_safety_rate.png
-    - assets/images/2017_safety_rate.png
-    - assets/images/2018_safety_rate.png
-    - assets/images/2019_safety_rate.png
+    - assets/images/init_safe.png
+    - assets/images/2015_safe.png
+    - assets/images/2016_safe.png
+    - assets/images/2017_safe.png
+    - assets/images/2018_safe.png
+    - assets/images/2019_safe.png
     - assets/images/place_gangnam.png
     - assets/images/year_select.png
     - assets/images/2015_place.png
@@ -81,6 +82,12 @@ flutter:
     - assets/images/2018_place.png
     - assets/images/2019_place.png
     - assets/images/place_select_text.png
+    - assets/images/information001.png
+    - assets/images/information002.png
+    - assets/images/information003.png
+    - assets/images/information004.png
+    - assets/images/information005.png
+    - assets/images/information006.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

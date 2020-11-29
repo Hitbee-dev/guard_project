@@ -38,6 +38,16 @@ Widget _myCardTypeList(BuildContext context) {
     Icons.settings_backup_restore,
     Icons.accessible_forward,
   ];
+
+  final images = [
+    "assets/images/information001.png",
+    "assets/images/information002.png",
+    "assets/images/information003.png",
+    "assets/images/information004.png",
+    "assets/images/information005.png",
+    "assets/images/information006.png",
+  ];
+
   return ListView.builder(
     itemCount: titles.length,
     itemBuilder: (context, index) {
@@ -45,7 +55,17 @@ Widget _myCardTypeList(BuildContext context) {
         child: ListTile(
           leading: Icon(icons[index]),
           title: Text(titles[index]),
-          onTap: () {},
+          onTap: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context){
+                  return AlertDialog(
+                    title: Text(titles[index]),
+                    content: Image.asset(images[index])
+                  );
+                }
+            );
+          },
         ),
       );
     },
