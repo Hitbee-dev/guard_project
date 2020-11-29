@@ -23,10 +23,12 @@ environment:
 dependencies:
   intl: ^0.16.1
   provider: ^3.0.0
-  location: ^2.3.5
+  location: ^3.0.1
   google_maps_flutter: ^0.5.27+3
   geolocator: ^6.1.4
+  fluster: ^1.1.2
   url_launcher: ^5.7.6
+  geocoder: ^0.2.1
   flutter:
     sdk: flutter
 
