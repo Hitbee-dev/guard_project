@@ -96,7 +96,12 @@ flutter:
 #    - assets/images/2018_time.png
 #    - assets/images/2019_time.png
 
-    - assets/audios/lovetogo.mp3
+    - assets/audios/i_see.mp3
+    - assets/audios/police.mp3
+    - assets/audios/wait.mp3
+    - assets/audios/where.mp3
+    - assets/audios/police_sound.mp3
+    - assets/audios/call.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

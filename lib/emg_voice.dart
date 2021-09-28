@@ -53,7 +53,7 @@ class _EMGVoiceState extends State<EMGVoice> {
     final titles = [
       '어디야?',
       '아 너 보인다!',
-      '오늘도 범인 한 명 잡았다',
+      '아 쟤 잡았다, 기다려',
       '사이렌 소리',
       '전화벨 소리',
       '경찰서에서 지금 나왔어, 거기로 가면 돼?',
@@ -61,12 +61,12 @@ class _EMGVoiceState extends State<EMGVoice> {
 
     final audios = [
       // "assets/audios/lovetogo.mp3",
-      "audios/lovetogo.mp3",
-      "audios/lovetogo.mp3",
-      "audios/lovetogo.mp3",
-      "audios/lovetogo.mp3",
-      "audios/lovetogo.mp3",
-      "audios/lovetogo.mp3",
+      "audios/where.mp3",
+      "audios/i_see.mp3",
+      "audios/wait.mp3",
+      "audios/police_sound.mp3",
+      "audios/call.mp3",
+      "audios/police.mp3",
     ];
 
     return ListView.builder(
